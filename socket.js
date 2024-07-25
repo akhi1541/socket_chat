@@ -9,9 +9,9 @@ const server = http.createServer((req,res)=>{
     res.write("hi");
     res.end()
   } 
-}).listen(port || 3003, () => {
-  console.log(`Server is running on port ${port}`);
-});
+}).listen((port, '0.0.0.0', () => {
+  console.log(`Server is running on port ${port}`)
+}));
 
 const io = socketIo(server, {
   cors: {
