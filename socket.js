@@ -3,13 +3,14 @@ require('dotenv').config()
 const socketIo = require("socket.io");
 const axios = require("axios");
 const cors = require('cors')
+const port =process.env.port 
 const server = http.createServer((req,res)=>{
   if (req.url === '/new-path') {
     res.write("hi");
     res.end()
   } 
-}).listen(process.env.port || 3003, () => {
-  console.log("Server is running on port 3003");
+}).listen(port || 3003, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
 const io = socketIo(server, {
