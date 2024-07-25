@@ -1,4 +1,5 @@
 const http = require("http");
+require('dotenv').config()
 const socketIo = require("socket.io");
 const axios = require("axios");
 const cors = require('cors')
@@ -7,7 +8,7 @@ const server = http.createServer((req,res)=>{
     res.write("hi");
     res.end()
   } 
-}).listen(10000, () => {
+}).listen(process.env.port || 3003, () => {
   console.log("Server is running on port 3003");
 });
 
@@ -57,7 +58,7 @@ function socketInit() {
           timeStamp: timeStamp,
         };
 
-        io.to(senderSocketId).to(receiverSocketId).emit("receivePrivate", createdPrivateMessage);
+        io.to(receiverSocketId).to(senderSocketId).emit("receivePrivate", createdPrivateMessage);
         
         
         // io.to(senderSocketId).emit("receivePrivate", msg);
