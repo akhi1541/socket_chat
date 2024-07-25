@@ -3,7 +3,7 @@ require('dotenv').config()
 const socketIo = require("socket.io");
 const axios = require("axios");
 const cors = require('cors')
-const port =process.env.port 
+const port =process.env.PORT 
 const server = http.createServer((req,res)=>{
   if (req.url === '/new-path') {
     res.write("hi");
